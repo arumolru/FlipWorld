@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject pause; // Pause UI
+    [SerializeField]
+    private Animator resume; // Resume 버튼
+
+    public bool isPause; // 게임 정지 여부
 
     private void Awake()
     {
@@ -21,19 +25,24 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 0; // 게임 정지
+            isPause = true; // 정지 여부 활성화
             pause.SetActive(true); // Pause UI활성화
         }
     }
 
     public void Resume()
     {
+        isPause = false; // 정지 여부 비활성화
         pause.SetActive(false); // 버튼을 누를경우 UI비활성화
-        Time.timeScale = 1; // 게임 정지
     }
 
     public void Exit()
     {
         Debug.Log("게임 시작 화면으로 이동");
+    }
+
+    public void OnMouseEnter()
+    {
+        resume.SetBool("IsMouse", true);
     }
 }

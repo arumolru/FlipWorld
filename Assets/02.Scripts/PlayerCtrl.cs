@@ -9,6 +9,9 @@ public class PlayerCtrl : MonoBehaviour
     private int maxSpeed = 5; // 플레이어 이동 속도
     private int jumpForce = 8; // 플레이어 점프력
 
+    [SerializeField]
+    private GameManager gameManager; // 게임 매니저
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -18,7 +21,7 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale != 0)
+        if (!gameManager.isPause)
         {
             // 플레이어가 정지하였을 때 저항값 설정
             Resistance();
@@ -39,7 +42,7 @@ public class PlayerCtrl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Time.timeScale != 0)
+        if (!gameManager.isPause)
         {
             // 플레이어 이동
             Move();
