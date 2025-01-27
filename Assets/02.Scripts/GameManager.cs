@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     private GameObject pause; // Pause UI
     [SerializeField]
     private Animator resume; // Resume 버튼
+    [SerializeField]
+    private Animator exit; // Exit 버튼
 
     public bool isPause; // 게임 정지 여부
 
@@ -41,8 +43,29 @@ public class GameManager : MonoBehaviour
         Debug.Log("게임 시작 화면으로 이동");
     }
 
-    public void OnMouseEnter()
+
+    // 마우스 포인터를 버튼에 가져다 댔을 때 이벤트 실행
+    // Resume 버튼에 마우스를 가져다 댔을 때
+    public void ResumeEnter()
     {
         resume.SetBool("IsMouse", true);
+    }
+
+    // Resume 버튼에 마우스를 뺐을 때
+    public void ResumeExit()
+    {
+        resume.SetBool("IsMouse", false);
+    }
+
+    // Exit 버튼에 마우스를 댔을 때
+    public void ExitEnter()
+    {
+        exit.SetBool("IsMouse", true);
+    }
+
+    // Exit 버튼에 마우스를 뺐을 때
+    public void ExitExit()
+    {
+        exit.SetBool("IsMouse", false);
     }
 }

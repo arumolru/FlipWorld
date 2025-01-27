@@ -177,6 +177,8 @@ GameObject:
   - component: {fileID: 331692942}
   - component: {fileID: 331692941}
   - component: {fileID: 331692940}
+  - component: {fileID: 331692944}
+  - component: {fileID: 331692943}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -298,6 +300,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331692938}
   m_CullTransparentMesh: 1
+--- !u!114 &331692943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331692938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1684118250}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: ExitEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1684118250}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: ExitExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!95 &331692944
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331692938}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9135d5ff7db7ff34d997b6a19e719d6c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &342148410
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,6 +3390,8 @@ GameObject:
   - component: {fileID: 1960079806}
   - component: {fileID: 1960079805}
   - component: {fileID: 1960079804}
+  - component: {fileID: 1960079807}
+  - component: {fileID: 1960079809}
   m_Layer: 5
   m_Name: Resume
   m_TagString: Untagged
@@ -3442,6 +3513,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960079802}
   m_CullTransparentMesh: 1
+--- !u!95 &1960079807
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960079802}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e6afce522141394985233a07e76fef8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1960079809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960079802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1684118250}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: ResumeEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1684118250}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: ResumeExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2136307549
 GameObject:
   m_ObjectHideFlags: 0
@@ -3665,9 +3803,17 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 8937230173400600791, guid: 00eda24f3f0ac224ca7b32dfb281e3f7, type: 3}
+      propertyPath: exit
+      value: 
+      objectReference: {fileID: 331692944}
+    - target: {fileID: 8937230173400600791, guid: 00eda24f3f0ac224ca7b32dfb281e3f7, type: 3}
       propertyPath: pause
       value: 
       objectReference: {fileID: 1080014708}
+    - target: {fileID: 8937230173400600791, guid: 00eda24f3f0ac224ca7b32dfb281e3f7, type: 3}
+      propertyPath: resume
+      value: 
+      objectReference: {fileID: 1960079807}
     - target: {fileID: 8937230173400600791, guid: 00eda24f3f0ac224ca7b32dfb281e3f7, type: 3}
       propertyPath: pauseUITitle
       value: 
