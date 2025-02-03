@@ -21,6 +21,7 @@ public class MainSceneGameManager : MonoBehaviour
     private Animator exitAnim; // 나가기 버튼 애니메이터
 
     private float fadeTime = 0; // 처음 알파값
+    private int stageNumber; // 스테이지 값
 
     private bool isStageScene = false; // 스테이지 선택 씬 활성화 여부
 
@@ -115,112 +116,155 @@ public class MainSceneGameManager : MonoBehaviour
     public void Stage1()
     {
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 1;
         panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage2()
     {
-        SceneManager.LoadScene("Stage2");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 2;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage3()
     {
-        SceneManager.LoadScene("Stage3");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 3;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage4()
     {
-        SceneManager.LoadScene("Stage4");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 4;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage5()
     {
-        SceneManager.LoadScene("Stage5");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 5;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage6()
     {
-        SceneManager.LoadScene("Stage6");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 6;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage7()
     {
-        SceneManager.LoadScene("Stage7");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 7;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage8()
     {
-        SceneManager.LoadScene("Stage8");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 8;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage9()
     {
-        SceneManager.LoadScene("Stage9");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 9;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage10()
     {
-        SceneManager.LoadScene("Stage10");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 10;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage11()
     {
-        SceneManager.LoadScene("Stage11");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 11;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage12()
     {
-        SceneManager.LoadScene("Stage12");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 12;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage13()
     {
-        SceneManager.LoadScene("Stage13");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 13;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage14()
     {
-        SceneManager.LoadScene("Stage14");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 14;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage15()
     {
-        SceneManager.LoadScene("Stage15");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 15;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage16()
     {
-        SceneManager.LoadScene("Stage16");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 16;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage17()
     {
-        SceneManager.LoadScene("Stage17");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 17;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage18()
     {
-        SceneManager.LoadScene("Stage18");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 18;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage19()
     {
-        SceneManager.LoadScene("Stage19");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 19;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage20()
     {
-        SceneManager.LoadScene("Stage20");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 20;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage21()
     {
-        SceneManager.LoadScene("Stage21");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 21;
+        panel.SetActive(true); // 패널 활성화
     }
 
     public void Stage22()
     {
-        SceneManager.LoadScene("Stage22");
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+        stageNumber = 22;
+        panel.SetActive(true); // 패널 활성화
     }
 
     // 마우스를 버튼 위에 가져다 댔을 경우
@@ -460,13 +504,14 @@ public class MainSceneGameManager : MonoBehaviour
         while (loadTime < 3.0f) // 알파값이 1이 될 때까지 반복
         {
             loadTime += 0.01f;
+
             yield return new WaitForSeconds(0.01f); // 0.01초마다 실행
             panelImage.color = new Color(0, 0, 0, loadTime); // 해당 패널의 투명도 조절
-        }
 
-        if (loadTime > 2.5f)
-        {
-            SceneManager.LoadScene("Stage1");
+            if (loadTime > 2.5f)
+            {
+                SceneManager.LoadScene("Stage" + stageNumber);
+            }
         }
     }
 }

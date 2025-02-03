@@ -24,7 +24,7 @@ public class Goal : MonoBehaviour
         // 오브젝트 회전
         if (spriteRenderer.color == Color.white)
         {
-            gameObject.transform.Rotate(0, 0, 0.01f);
+            gameObject.transform.Rotate(0, 0, 0.05f);
         }
 
         else

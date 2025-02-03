@@ -1,4 +1,7 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +13,10 @@ public class GameManager : MonoBehaviour
     private Animator resume; // Resume 버튼
     [SerializeField]
     private Animator exit; // Exit 버튼
+    [SerializeField]
+    private GameObject panel; // 패널 오브젝트
+    [SerializeField]
+    private Image panelImage; // 패널 이미지
 
     public bool isPause; // 게임 정지 여부
 
@@ -41,6 +48,25 @@ public class GameManager : MonoBehaviour
     public void Exit()
     {
         Debug.Log("게임 시작 화면으로 이동");
+
+        panel.SetActive(true); // 패널 활성화
+        StartCoroutine(LoadCoroutine()); // 코루틴 실행
+    }
+
+    IEnumerator LoadCoroutine()
+    {
+        float loadTime = 0; // 로딩 시간
+        while (loadTime < 3.0f) // 알파값이 1이 될 때까지 반복
+        {
+            loadTime += 0.01f;
+            yield return new WaitForSeconds(0.01f); // 0.01초마다 실행
+            panelImage.color = new Color(0, 0, 0, loadTime); // 해당 패널의 투명도 조절
+        }
+
+        if (loadTime > 2.5f)
+        {
+            SceneManager.LoadScene("MainScene"); // 메인 화면으로 이동
+        }
     }
 
 
