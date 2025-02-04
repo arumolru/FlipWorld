@@ -20,10 +20,8 @@ public class GameManager : MonoBehaviour
 
     public bool isPause; // 게임 정지 여부
 
-    private void Awake()
-    {
-        pause.SetActive(false); // Pause UI 비활성화
-    }
+    [SerializeField]
+    private AudioSource buttonSounds; // 버튼 사운드
 
     private void Update()
     {
@@ -41,13 +39,14 @@ public class GameManager : MonoBehaviour
 
     public void Resume()
     {
+        buttonSounds.Play(); // 사운드 재생
         isPause = false; // 정지 여부 비활성화
         pause.SetActive(false); // 버튼을 누를경우 UI비활성화
     }
 
     public void Exit()
     {
-        Debug.Log("게임 시작 화면으로 이동");
+        buttonSounds.Play(); // 사운드 재생
 
         panel.SetActive(true); // 패널 활성화
         StartCoroutine(LoadCoroutine()); // 코루틴 실행

@@ -12,6 +12,11 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField]
     private GameManager gameManager; // 게임 매니저
 
+    [SerializeField]
+    private AudioSource jumpSounds; // 점프 사운드
+    [SerializeField]
+    private AudioSource spaceFlipSounds; // 반전 사운드
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -101,6 +106,8 @@ public class PlayerCtrl : MonoBehaviour
         // 플레이어가 점프 상태가 아닐 때만 점프 할 수 있게 설정
         if (Input.GetButtonDown("Jump") && !anim.GetBool("IsJump"))
         {
+            jumpSounds.Play(); // 사운드 재생
+
             // 플레이어가 반전 상태가 아닐 경우
             if (gameObject.layer == 8)
             {
@@ -156,6 +163,8 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z) && !anim.GetBool("IsJump"))
         {
+            spaceFlipSounds.Play(); // 사운드 재생
+
             // 플레이어가 반전 상태일 경우
             if (rbSprite.flipY)
             {

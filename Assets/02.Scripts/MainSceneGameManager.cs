@@ -28,9 +28,13 @@ public class MainSceneGameManager : MonoBehaviour
     [SerializeField]
     private Animator[] selectButton; // 스테이지 버튼 애니메이션
 
+    [SerializeField]
+    private AudioSource buttonSounds; // 버튼 사운드
+
     // Start 버튼을 눌렀을 때
     public void StartButton()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         panel.SetActive(true); // 패널 활성화
         StartCoroutine(FadeCoroutine()); // 코루틴 실행
     }
@@ -90,6 +94,7 @@ public class MainSceneGameManager : MonoBehaviour
     // Exit버튼을 눌렀을 때
     public void ExitButton()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         Debug.Log("게임 종료");
     }
 
@@ -108,6 +113,7 @@ public class MainSceneGameManager : MonoBehaviour
     // Back버튼을 눌렀을 때
     public void Back()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         panel.SetActive(true); // 패널 활성화
         StartCoroutine(FadeCoroutine());
     }
@@ -115,6 +121,7 @@ public class MainSceneGameManager : MonoBehaviour
     // 스테이지 버튼을 눌렀을 때
     public void Stage1()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 1;
         panel.SetActive(true); // 패널 활성화
@@ -122,6 +129,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage2()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 2;
         panel.SetActive(true); // 패널 활성화
@@ -129,6 +137,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage3()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 3;
         panel.SetActive(true); // 패널 활성화
@@ -136,6 +145,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage4()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 4;
         panel.SetActive(true); // 패널 활성화
@@ -143,6 +153,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage5()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 5;
         panel.SetActive(true); // 패널 활성화
@@ -150,6 +161,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage6()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 6;
         panel.SetActive(true); // 패널 활성화
@@ -157,6 +169,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage7()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 7;
         panel.SetActive(true); // 패널 활성화
@@ -164,6 +177,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage8()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 8;
         panel.SetActive(true); // 패널 활성화
@@ -171,6 +185,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage9()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 9;
         panel.SetActive(true); // 패널 활성화
@@ -178,6 +193,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage10()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 10;
         panel.SetActive(true); // 패널 활성화
@@ -185,6 +201,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage11()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 11;
         panel.SetActive(true); // 패널 활성화
@@ -192,6 +209,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage12()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 12;
         panel.SetActive(true); // 패널 활성화
@@ -199,6 +217,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage13()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 13;
         panel.SetActive(true); // 패널 활성화
@@ -206,6 +225,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage14()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 14;
         panel.SetActive(true); // 패널 활성화
@@ -213,6 +233,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage15()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 15;
         panel.SetActive(true); // 패널 활성화
@@ -220,6 +241,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage16()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 16;
         panel.SetActive(true); // 패널 활성화
@@ -227,6 +249,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage17()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 17;
         panel.SetActive(true); // 패널 활성화
@@ -234,6 +257,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage18()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 18;
         panel.SetActive(true); // 패널 활성화
@@ -241,6 +265,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage19()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 19;
         panel.SetActive(true); // 패널 활성화
@@ -248,6 +273,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage20()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 20;
         panel.SetActive(true); // 패널 활성화
@@ -255,6 +281,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage21()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 21;
         panel.SetActive(true); // 패널 활성화
@@ -262,6 +289,7 @@ public class MainSceneGameManager : MonoBehaviour
 
     public void Stage22()
     {
+        buttonSounds.Play(); // 버튼 사운드 재생
         StartCoroutine(LoadCoroutine()); // 코루틴 실행
         stageNumber = 22;
         panel.SetActive(true); // 패널 활성화
