@@ -5,6 +5,7 @@ public class PlayerCtrl : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer rbSprite;
     Animator anim;
+    CapsuleCollider2D capsuleCollider;
 
     private int maxSpeed = 5; // 플레이어 이동 속도
     private int jumpForce = 8; // 플레이어 점프력
@@ -17,11 +18,15 @@ public class PlayerCtrl : MonoBehaviour
     [SerializeField]
     private AudioSource spaceFlipSounds; // 반전 사운드
 
+    private bool isYGravity = false; // Y중력 상황
+    private bool isXGravity = false; // X중력 상황
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         rbSprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     private void Update()
@@ -208,6 +213,8 @@ public class PlayerCtrl : MonoBehaviour
     {
         Vector2 gravity = Physics2D.gravity;
         Physics2D.gravity = new Vector2(gravity.x, -gravity.y);
+
+        isYGravity = !isYGravity;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -216,6 +223,39 @@ public class PlayerCtrl : MonoBehaviour
         if (collision.gameObject.tag == "Goal")
         {
             gameObject.SetActive(false);
+        }
+
+        // 플레이어가 Spike에 닿았을 경우
+        if (collision.gameObject.tag == "Spike")
+        {
+            Debug.Log("게임 오버");
+            rbSprite.color = new Color(1, 1, 1, 0.4f); // 플레이어 피격 시 반투명화
+            // 플레이어의 FlipY의 상태 변환
+            rbSprite.flipY = !rbSprite.flipY ? true : false;
+            // 콜라이더 비활성
+            capsuleCollider.enabled = false;        
+        }
+
+        // 플레이어가 MapWallX에 닿았을 경우
+        /*if (collision.gameObject.tag == "MapWallX")
+        {
+            // 플레이어의 X위치를 반전
+            Vector2 vec = new Vector2(rb.position.x, rb.position.y);
+            vec.x *= -1;
+            rb.position = vec;
+        }*/
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 플레이어가 MapWallY에 닿앗을 경우
+        if (collision.gameObject.tag == "MapWallY")
+        {
+            Debug.Log("닿았습니다");
+            // 플레이어의 Y위치를 반전
+            Vector2 vec = new Vector2(rb.position.x, rb.position.y);
+            vec.y *= -1;
+            rb.position = vec;
         }
     }
 }

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Goal
+  - MapWallX
+  - MapWallY
+  - Spike
   layers:
   - Default
   - TransparentFX
@@ -16,8 +19,8 @@ TagManager:
   - GrayMap
   - Player
   - FlipPlayer
-  - 
-  - 
+  - MapWallY
+  - MapWallX
   - 
   - 
   - 
