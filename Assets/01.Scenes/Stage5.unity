@@ -1686,9 +1686,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 688131293}
+    - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
       propertyPath: jumpSounds
       value: 
       objectReference: {fileID: 1287004855}
+    - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
+      propertyPath: panelImage
+      value: 
+      objectReference: {fileID: 688131295}
     - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
       propertyPath: gameManager
       value: 
@@ -7240,6 +7248,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2694208359050765885, guid: efbfec3c108849b4dad54f9a634583c5, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3190014210476974664, guid: efbfec3c108849b4dad54f9a634583c5, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4948314854585651789, guid: efbfec3c108849b4dad54f9a634583c5, type: 3}
@@ -7258,6 +7270,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1684118250}
+    - target: {fileID: 7342609081426249354, guid: efbfec3c108849b4dad54f9a634583c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7394965014156324494, guid: efbfec3c108849b4dad54f9a634583c5, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

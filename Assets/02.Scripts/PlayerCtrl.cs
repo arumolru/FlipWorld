@@ -1,4 +1,7 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerCtrl : MonoBehaviour
 {
@@ -12,6 +15,10 @@ public class PlayerCtrl : MonoBehaviour
 
     [SerializeField]
     private GameManager gameManager; // 게임 매니저
+    [SerializeField]
+    private GameObject panel; // 패널 오브젝트
+    [SerializeField]
+    private Image panelImage; // 패널 이미지
 
     [SerializeField]
     private AudioSource jumpSounds; // 점프 사운드
@@ -27,6 +34,8 @@ public class PlayerCtrl : MonoBehaviour
         rbSprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+
+        Debug.Log(Physics2D.gravity);
     }
 
     private void Update()
@@ -228,12 +237,17 @@ public class PlayerCtrl : MonoBehaviour
         // 플레이어가 Spike에 닿았을 경우
         if (collision.gameObject.tag == "Spike")
         {
-            Debug.Log("게임 오버");
             rbSprite.color = new Color(1, 1, 1, 0.4f); // 플레이어 피격 시 반투명화
-            // 플레이어의 FlipY의 상태 변환
-            rbSprite.flipY = !rbSprite.flipY ? true : false;
             // 콜라이더 비활성
-            capsuleCollider.enabled = false;        
+            capsuleCollider.enabled = false;
+            // 플레이어 컨트롤 불가
+            gameManager.isPause = true;
+            // 패널 활성화
+            panel.SetActive(true);
+            // 사망 시 점프 효과
+            rb.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
+            // 파괴
+            StartCoroutine(DeActive());
         }
 
         // 플레이어가 MapWallX에 닿았을 경우
@@ -256,6 +270,24 @@ public class PlayerCtrl : MonoBehaviour
             Vector2 vec = new Vector2(rb.position.x, rb.position.y);
             vec.y *= -1;
             rb.position = vec;
+        }
+    }
+
+    IEnumerator DeActive()
+    {
+        float loadTime = 0; // 로딩 시간
+        while (loadTime < 2.0f) // 알파값이 1이 될 때까지 반복
+        {
+            loadTime += 0.01f;
+            yield return new WaitForSeconds(0.01f); // 0.01초마다 실행
+            panelImage.color = new Color(0, 0, 0, loadTime); // 해당 패널의 투명도 조절
+        }
+
+        if (loadTime > 1.5f)
+        {
+            Vector2 gravity = Physics2D.gravity;
+            Physics2D.gravity = new Vector2(gravity.x, gravity.y);
+            SceneManager.LoadScene("Stage" + gameManager.stageLevel); // 메인 화면으로 이동
         }
     }
 }
