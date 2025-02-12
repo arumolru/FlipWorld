@@ -24,6 +24,8 @@ public class PlayerCtrl : MonoBehaviour
     private AudioSource jumpSounds; // 점프 사운드
     [SerializeField]
     private AudioSource spaceFlipSounds; // 반전 사운드
+    [SerializeField]
+    private AudioSource gameOver; // 게임 오버 사운드
 
     private bool isYGravity = false; // Y중력 상황
     private bool isXGravity = false; // X중력 상황
@@ -35,7 +37,7 @@ public class PlayerCtrl : MonoBehaviour
         anim = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
 
-        Debug.Log(Physics2D.gravity);
+        Physics2D.gravity = new Vector2(0, -9.81f);
     }
 
     private void Update()
@@ -246,8 +248,10 @@ public class PlayerCtrl : MonoBehaviour
             panel.SetActive(true);
             // 사망 시 점프 효과
             rb.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
-            // 파괴
-            StartCoroutine(DeActive());
+            // 게임 오버 사운드 출력
+            gameOver.Play();
+            // 재시작
+            StartCoroutine(Retry());
         }
 
         // 플레이어가 MapWallX에 닿았을 경우
@@ -273,7 +277,7 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    IEnumerator DeActive()
+    IEnumerator Retry()
     {
         float loadTime = 0; // 로딩 시간
         while (loadTime < 2.0f) // 알파값이 1이 될 때까지 반복
@@ -285,8 +289,6 @@ public class PlayerCtrl : MonoBehaviour
 
         if (loadTime > 1.5f)
         {
-            Vector2 gravity = Physics2D.gravity;
-            Physics2D.gravity = new Vector2(gravity.x, gravity.y);
             SceneManager.LoadScene("Stage" + gameManager.stageLevel); // 메인 화면으로 이동
         }
     }
