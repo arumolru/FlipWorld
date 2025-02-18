@@ -269,11 +269,39 @@ public class PlayerCtrl : MonoBehaviour
         // 플레이어가 MapWallY에 닿앗을 경우
         if (collision.gameObject.tag == "MapWallY")
         {
-            Debug.Log("닿았습니다");
             // 플레이어의 Y위치를 반전
             Vector2 vec = new Vector2(rb.position.x, rb.position.y);
             vec.y *= -1;
             rb.position = vec;
+        }
+
+        // 플레이어가 MainCoin에 닿았을 경우
+        if (collision.gameObject.tag == "MainCoin")
+        {
+            // CoinBlock이라는 태그를 가진 모든 오브젝트 찾기
+            GameObject[] coinBlocks = GameObject.FindGameObjectsWithTag("CoinBlock");
+
+            // CoinBlock 태그를 가진 모든 오브젝트의 Layer변경
+            foreach(GameObject coinBlock in coinBlocks)
+            {
+                SpriteRenderer coinBlockRenderer = coinBlock.GetComponent<SpriteRenderer>();
+
+                // 코인 블럭의 색이 Black일 경우
+                if (coinBlock.layer == 6)
+                {
+                    // 색상 변경
+                    coinBlock.layer = 7;
+                    coinBlockRenderer.color = new Color(100f / 255f, 100f / 255f, 100f / 255f, 1);
+                }
+
+                // 코인 블럭의 색이 Gray일 경우
+                else if (coinBlock.layer == 7)
+                {
+                    // 색상 변경
+                    coinBlock.layer = 6;
+                    coinBlockRenderer.color = new Color(0, 0, 0, 1);
+                }
+            }
         }
     }
 

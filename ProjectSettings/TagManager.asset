@@ -8,6 +8,9 @@ TagManager:
   - MapWallX
   - MapWallY
   - Spike
+  - MainCoin
+  - SubCoin
+  - CoinBlock
   layers:
   - Default
   - TransparentFX
