@@ -21,11 +21,7 @@ public class PlayerCtrl : MonoBehaviour
     private Image panelImage; // 패널 이미지
 
     [SerializeField]
-    private AudioSource jumpSounds; // 점프 사운드
-    [SerializeField]
-    private AudioSource spaceFlipSounds; // 반전 사운드
-    [SerializeField]
-    private AudioSource gameOver; // 게임 오버 사운드
+    private AudioSource[] GameSound; // 게임 사운드
 
     private bool isYGravity = false; // Y중력 상황
     private bool isXGravity = false; // X중력 상황
@@ -122,7 +118,7 @@ public class PlayerCtrl : MonoBehaviour
         // 플레이어가 점프 상태가 아닐 때만 점프 할 수 있게 설정
         if (Input.GetButtonDown("Jump") && !anim.GetBool("IsJump"))
         {
-            jumpSounds.Play(); // 사운드 재생
+            GameSound[0].Play(); // 사운드 재생
 
             // 플레이어가 반전 상태가 아닐 경우
             if (gameObject.layer == 8)
@@ -179,7 +175,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z) && !anim.GetBool("IsJump"))
         {
-            spaceFlipSounds.Play(); // 사운드 재생
+            GameSound[1].Play(); // 사운드 재생
 
             // 플레이어가 반전 상태일 경우
             if (rbSprite.flipY)
@@ -249,7 +245,7 @@ public class PlayerCtrl : MonoBehaviour
             // 사망 시 점프 효과
             rb.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
             // 게임 오버 사운드 출력
-            gameOver.Play();
+            GameSound[2].Play();
             // 재시작
             StartCoroutine(Retry());
         }
@@ -278,6 +274,8 @@ public class PlayerCtrl : MonoBehaviour
         // 플레이어가 MainCoin에 닿았을 경우
         if (collision.gameObject.tag == "MainCoin")
         {
+            GameSound[3].Play(); // 사운드 재생
+
             // CoinBlock이라는 태그를 가진 모든 오브젝트 찾기
             GameObject[] coinBlocks = GameObject.FindGameObjectsWithTag("CoinBlock");
 
@@ -291,7 +289,38 @@ public class PlayerCtrl : MonoBehaviour
                 {
                     // 색상 변경
                     coinBlock.layer = 7;
-                    coinBlockRenderer.color = new Color(100f / 255f, 100f / 255f, 100f / 255f, 1);
+                    coinBlockRenderer.color = new Color(137f / 255f, 137f / 255f, 137f / 255f, 1);
+                }
+
+                // 코인 블럭의 색이 Gray일 경우
+                else if (coinBlock.layer == 7)
+                {
+                    // 색상 변경
+                    coinBlock.layer = 6;
+                    coinBlockRenderer.color = new Color(0, 0, 0, 1);
+                }
+            }
+        }
+
+        // 플레이어가 SilverCoin에 닿았을 경우
+        if (collision.gameObject.tag == "SilverCoin")
+        {
+            GameSound[3].Play(); // 사운드 재생
+
+            // CoinBlock이라는 태그를 가진 모든 오브젝트 찾기
+            GameObject[] coinBlocks = GameObject.FindGameObjectsWithTag("SilverCoinBlock");
+
+            // CoinBlock 태그를 가진 모든 오브젝트의 Layer변경
+            foreach (GameObject coinBlock in coinBlocks)
+            {
+                SpriteRenderer coinBlockRenderer = coinBlock.GetComponent<SpriteRenderer>();
+
+                // 코인 블럭의 색이 Black일 경우
+                if (coinBlock.layer == 6)
+                {
+                    // 색상 변경
+                    coinBlock.layer = 7;
+                    coinBlockRenderer.color = new Color(137f / 255f, 137f / 255f, 137f / 255f, 1);
                 }
 
                 // 코인 블럭의 색이 Gray일 경우

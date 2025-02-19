@@ -1985,6 +1985,22 @@ PrefabInstance:
       propertyPath: spaceFlipSounds
       value: 
       objectReference: {fileID: 1287004854}
+    - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
+      propertyPath: GameSound.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
+      propertyPath: 'GameSound.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1287004855}
+    - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
+      propertyPath: 'GameSound.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1287004854}
+    - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
+      propertyPath: 'GameSound.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2133911230}
     - target: {fileID: 7571755507761468828, guid: 9d255292b90772c48910fe30d155856c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.91

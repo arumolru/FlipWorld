@@ -842,9 +842,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 688131293}
+    - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
       propertyPath: jumpSounds
       value: 
       objectReference: {fileID: 1287004855}
+    - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
+      propertyPath: panelImage
+      value: 
+      objectReference: {fileID: 688131295}
     - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
       propertyPath: gameManager
       value: 
@@ -853,6 +861,22 @@ PrefabInstance:
       propertyPath: spaceFlipSounds
       value: 
       objectReference: {fileID: 1287004854}
+    - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
+      propertyPath: GameSound.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
+      propertyPath: 'GameSound.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1287004855}
+    - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
+      propertyPath: 'GameSound.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1287004854}
+    - target: {fileID: 6890513386450254545, guid: 9d255292b90772c48910fe30d155856c, type: 3}
+      propertyPath: 'GameSound.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1287004856}
     - target: {fileID: 7571755507761468828, guid: 9d255292b90772c48910fe30d155856c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.55
@@ -3159,6 +3183,11 @@ AudioSource:
 --- !u!82 &1287004855 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8867887620466883267, guid: b470712af10923442a89767b34eedba5, type: 3}
+  m_PrefabInstance: {fileID: 1287004852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1287004856 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1690581697749945469, guid: b470712af10923442a89767b34eedba5, type: 3}
   m_PrefabInstance: {fileID: 1287004852}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1684118250 stripped
