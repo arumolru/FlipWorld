@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/01.Scenes/Stage2.unity
-    guid: 11ee5034e722a414b83767e3c0d743fe
+    guid: f70e3f490ad789a4f90854355629d1fe
   - enabled: 1
     path: Assets/01.Scenes/Stage3.unity
     guid: 595a7abf066c4d347b6b30c5a7a2b7f4
@@ -26,5 +26,26 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/Stage6.unity
     guid: 8c307edc93cb56d4b8b5be22490db133
+  - enabled: 1
+    path: Assets/01.Scenes/Stage7.unity
+    guid: fde3e96ff1757d041a543d1d8ef98388
+  - enabled: 1
+    path: Assets/01.Scenes/Stage8.unity
+    guid: 236f741876d698c48ae149a2bfe0e91a
+  - enabled: 1
+    path: Assets/01.Scenes/Stage9.unity
+    guid: 4d7593f5e88e5f848ba1fd387b545eda
+  - enabled: 1
+    path: Assets/01.Scenes/Stage10.unity
+    guid: fd7d29da31728204f9591ae20f53e825
+  - enabled: 1
+    path: Assets/01.Scenes/Stage11.unity
+    guid: 739d2f4c48682284fa0182d0790edd3b
+  - enabled: 1
+    path: Assets/01.Scenes/Stage12.unity
+    guid: 10f7a8b65756e0e449136ec9d8ec7f87
+  - enabled: 1
+    path: Assets/01.Scenes/Stage13.unity
+    guid: ed3b1efe917435949b29756a8feb5e10
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
