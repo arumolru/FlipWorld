@@ -24,7 +24,7 @@ public class PlayerCtrl : MonoBehaviour
     private AudioSource[] GameSound; // 게임 사운드
 
     private bool isYGravity = false; // Y중력 상황
-    private bool isXGravity = false; // X중력 상황
+    private bool isSpaceGravity = false; // 공간 상황
 
     private void Awake()
     {
@@ -54,6 +54,9 @@ public class PlayerCtrl : MonoBehaviour
 
             // 플레이어 반전
             SpaceFlip();
+
+            // RayCast를 통한 더블 점프 방지
+            RayCastJump();
         }
     }
 
@@ -63,9 +66,6 @@ public class PlayerCtrl : MonoBehaviour
         {
             // 플레이어 이동
             Move();
-
-            // RayCast를 통한 더블 점프 방지
-            RayCastJump();
         }
     }
 
@@ -121,14 +121,14 @@ public class PlayerCtrl : MonoBehaviour
             GameSound[0].Play(); // 사운드 재생
 
             // 플레이어가 반전 상태가 아닐 경우
-            if (gameObject.layer == 8)
+            if (!rbSprite.flipY)
             {
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
                 anim.SetBool("IsJump", true);
             }
 
             // 플레이어가 반전 상태일 경우
-            else if (gameObject.layer == 9)
+            else
             {
                 rb.AddForce(Vector2.down * jumpForce, ForceMode2D.Impulse);
                 anim.SetBool("IsJump", true);
@@ -139,33 +139,67 @@ public class PlayerCtrl : MonoBehaviour
     void RayCastJump()
     {
         // 플레이어가 반전 상태가 아닐 경우
-        if(rb.linearVelocityY < 0 && gameObject.layer == 8)
+        if(rb.linearVelocityY < 0 && !rbSprite.flipY)
         {
-            Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));
-
-            RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.down, 1, LayerMask.GetMask("BlackMap"));
-
-            if (hit.collider != null)
+            if(isYGravity)
             {
-                if (hit.distance < 0.5f)
+                Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));
+
+                RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.down, 1, LayerMask.GetMask("GrayMap"));
+
+                if (hit.collider != null)
                 {
-                    anim.SetBool("IsJump", false);
+                    if (hit.distance < 0.5f)
+                    {
+                        anim.SetBool("IsJump", false);
+                    }
+                }
+            }
+            else
+            {
+                Debug.DrawRay(rb.position, Vector3.down, new Color(0, 1, 0));
+
+                RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.down, 1, LayerMask.GetMask("BlackMap"));
+
+                if (hit.collider != null)
+                {
+                    if (hit.distance < 0.5f)
+                    {
+                        anim.SetBool("IsJump", false);
+                    }
                 }
             }
         }
 
         // 플레이어가 반전 상태일 경우
-        else if (rb.linearVelocityY > 0 && gameObject.layer == 9)
+        else if (rb.linearVelocityY > 0 && rbSprite.flipY)
         {
-            Debug.DrawRay(rb.position, Vector3.up, new Color(0, 1, 0));
-
-            RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.up, 1, LayerMask.GetMask("GrayMap"));
-
-            if (hit.collider != null)
+            if(isYGravity)
             {
-                if (hit.distance < 0.5f)
+                Debug.DrawRay(rb.position, Vector3.up, new Color(0, 1, 0));
+
+                RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.up, 1, LayerMask.GetMask("BlackMap"));
+
+                if (hit.collider != null)
                 {
-                    anim.SetBool("IsJump", false);
+                    if (hit.distance < 0.5f)
+                    {
+                        anim.SetBool("IsJump", false);
+                    }
+                }
+            }
+            else
+            {
+                Debug.DrawRay(rb.position, Vector3.up, new Color(0, 1, 0));
+
+                RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector3.up, 1, LayerMask.GetMask("GrayMap"));
+
+                if (hit.collider != null)
+                {
+                    if (hit.distance < 0.5f)
+                    {
+                        anim.SetBool("IsJump", false);
+                    }
                 }
             }
         }
@@ -174,43 +208,90 @@ public class PlayerCtrl : MonoBehaviour
     void SpaceFlip()
     {
         if (Input.GetKeyDown(KeyCode.Z) && !anim.GetBool("IsJump"))
-        {
+        {       
+            isSpaceGravity = !isSpaceGravity;
+            Debug.Log(Physics2D.gravity);
+
             GameSound[1].Play(); // 사운드 재생
 
-            // 플레이어가 반전 상태일 경우
-            if (rbSprite.flipY)
+            // 플레이어가 공간 반전 상태일 경우
+            if (isSpaceGravity)
             {
-                gameObject.layer = 8; // 플레이어 레이어 변경
+                // 플레이어가 중력 반전상태가 아닐 경우
+                if(!isYGravity)
+                {
+                    gameObject.layer = 9; // 플레이어 레이어 변경
 
-                // Physics2D의 Gravity반전
-                FlipGravity();
+                    // Physics2D의 Gravity반전
+                    FlipGravity();
 
-                // 플레이어의 Y위치를 기존 위치에서 -1 내림 
-                Vector2 vec = new Vector2(rb.position.x, rb.position.y);
-                vec.y += 1;
-                rb.position = vec;
+                    // 플레이어의 Y위치를 기존 위치에서 +1 올림 
+                    Vector2 vec = new Vector2(rb.position.x, rb.position.y);
+                    vec.y -= 1;
+                    rb.position = vec;
 
-                // 플레이어 반전 및 색 변경
-                rbSprite.flipY = false;
-                rbSprite.color = new Color(1, 1, 1);
+                    // 플레이어 반전 및 색 변경
+                    rbSprite.flipY = true;
+                    rbSprite.color = new Color(166f / 255f, 166f / 255f, 166f / 255f);
+                }
+
+                // 플레이어가 중력 반전 상태일 경우
+                else
+                {
+                    gameObject.layer = 9; // 플레이어 레이어 변경
+
+                    // Physics2D의 Gravity반전
+                    FlipGravity();
+
+                    // 플레이어의 Y위치를 기존 위치에서 -1 내림 
+                    Vector2 vec = new Vector2(rb.position.x, rb.position.y);
+                    vec.y += 1;
+                    rb.position = vec;
+
+                    // 플레이어 반전 및 색 변경
+                    rbSprite.flipY = false;
+                    rbSprite.color = new Color(166f / 255f, 166f / 255f, 166f / 255f);
+                }
             }
 
-            // 플레이어가 반전 상태가 아닐 경우
+            // 플레이어가 공간 반전 상태가 아닐 경우
             else
             {
-                gameObject.layer = 9; // 플레이어 레이어 변경
+                // 플레이어가 중력 반전상태가 아닐 경우
+                if (!isYGravity)
+                {
+                    gameObject.layer = 8; // 플레이어 레이어 변경
 
-                // Physics2D의 Gravity반전
-                FlipGravity();
+                    // Physics2D의 Gravity반전
+                    FlipGravity();
 
-                // 플레이어 반전 및 색 변경
-                rbSprite.flipY = true;
-                rbSprite.color = new Color(166f / 255f, 166f / 255f, 166f / 255f);
+                    // 플레이어의 Y위치를 기존 위치에서 -1 내림 
+                    Vector2 vec = new Vector2(rb.position.x, rb.position.y);
+                    vec.y += 1;
+                    rb.position = vec;
 
-                // 플레이어의 Y위치를 기존 위치에서 +1 올림 
-                Vector2 vec = new Vector2(rb.position.x, rb.position.y);
-                vec.y -= 1;
-                rb.position = vec;
+                    // 플레이어 반전 및 색 변경
+                    rbSprite.flipY = false;
+                    rbSprite.color = new Color(1, 1, 1);
+                }
+
+                // 플레이어가 중력 반전상태일 경우
+                if (isYGravity)
+                {
+                    gameObject.layer = 8; // 플레이어 레이어 변경
+
+                    // Physics2D의 Gravity반전
+                    FlipGravity();
+
+                    // 플레이어 반전 및 색 변경
+                    rbSprite.flipY = true;
+                    rbSprite.color = new Color(1, 1, 1f);
+
+                    // 플레이어의 Y위치를 기존 위치에서 +1 올림 
+                    Vector2 vec = new Vector2(rb.position.x, rb.position.y);
+                    vec.y -= 1;
+                    rb.position = vec;
+                }
             }
         }
     }
@@ -220,8 +301,6 @@ public class PlayerCtrl : MonoBehaviour
     {
         Vector2 gravity = Physics2D.gravity;
         Physics2D.gravity = new Vector2(gravity.x, -gravity.y);
-
-        isYGravity = !isYGravity;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -331,6 +410,19 @@ public class PlayerCtrl : MonoBehaviour
                     coinBlockRenderer.color = new Color(0, 0, 0, 1);
                 }
             }
+        }
+
+        // 플레이어가 GravityFlip에 닿았을 경우
+        if (collision.gameObject.tag == "GravityFlip")
+        {
+            isYGravity = true;
+
+            // Physics2D의 Gravity반전
+            FlipGravity();
+
+            rbSprite.flipY = true;
+
+            Debug.Log(isYGravity);
         }
     }
 

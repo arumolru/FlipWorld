@@ -12,6 +12,7 @@ TagManager:
   - CoinBlock
   - SilverCoin
   - SilverCoinBlock
+  - GravityFlip
   layers:
   - Default
   - TransparentFX
