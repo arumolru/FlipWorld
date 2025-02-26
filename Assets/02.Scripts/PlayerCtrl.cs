@@ -412,17 +412,36 @@ public class PlayerCtrl : MonoBehaviour
             }
         }
 
-        // 플레이어가 GravityFlip에 닿았을 경우
-        if (collision.gameObject.tag == "GravityFlip")
+        // 플레이어가 GravityFlipYUp에 닿았을 경우
+        if (collision.gameObject.tag == "GravityFlipYUp")
         {
-            isYGravity = true;
+            if(!rbSprite.flipY)
+            {
+                GameSound[4].Play(); // 사운드 재생
 
-            // Physics2D의 Gravity반전
-            FlipGravity();
+                isYGravity = !isYGravity;
 
-            rbSprite.flipY = true;
+                // Physics2D의 Gravity반전
+                FlipGravity();
 
-            Debug.Log(isYGravity);
+                rbSprite.flipY = true;
+            }
+        }
+
+        // 플레이어가 GravityFlipYDown에 닿았을 경우
+        if (collision.gameObject.tag == "GravityFlipYDown")
+        {
+            if (rbSprite.flipY)
+            {
+                GameSound[4].Play(); // 사운드 재생
+
+                isYGravity = !isYGravity;
+
+                // Physics2D의 Gravity반전
+                FlipGravity();
+
+                rbSprite.flipY = false;
+            }
         }
     }
 
