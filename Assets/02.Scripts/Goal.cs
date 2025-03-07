@@ -38,6 +38,7 @@ public class Goal : MonoBehaviour
         // 오브젝트가 플레이어에 닿았을 경우
         if (collision.gameObject.tag == "Player")
         {
+
             // 두 오브젝트 색 반전
             spriteRenderer.color = new Color(0, 0, 0);
             miniGoal.color = new Color(1, 1, 1);

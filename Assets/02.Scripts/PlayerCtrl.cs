@@ -149,7 +149,7 @@ public class PlayerCtrl : MonoBehaviour
 
                 if (hit.collider != null)
                 {
-                    if (hit.distance < 0.5f)
+                    if (hit.distance < 0.6f)
                     {
                         anim.SetBool("IsJump", false);
                     }
@@ -328,15 +328,6 @@ public class PlayerCtrl : MonoBehaviour
             // 재시작
             StartCoroutine(Retry());
         }
-
-        // 플레이어가 MapWallX에 닿았을 경우
-        /*if (collision.gameObject.tag == "MapWallX")
-        {
-            // 플레이어의 X위치를 반전
-            Vector2 vec = new Vector2(rb.position.x, rb.position.y);
-            vec.x *= -1;
-            rb.position = vec;
-        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

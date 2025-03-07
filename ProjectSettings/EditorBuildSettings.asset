@@ -56,5 +56,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/Stage16.unity
     guid: f608df182539fbe4c925bf3c2296c1ec
+  - enabled: 1
+    path: Assets/01.Scenes/Stage17.unity
+    guid: 1d30d77b5732fd344932316131610116
+  - enabled: 1
+    path: Assets/01.Scenes/Stage18.unity
+    guid: 88a6e254d8a88b24480ef7a25cf83632
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

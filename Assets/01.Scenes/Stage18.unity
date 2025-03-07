@@ -2350,7 +2350,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 664086319527962282, guid: 9d255292b90772c48910fe30d155856c, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4707702096457628907, guid: 9d255292b90772c48910fe30d155856c, type: 3}
       propertyPath: m_Size.y
@@ -5400,6 +5400,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 3989028552514883915, guid: c1a4139fdd78be840bff579e0ee95a83, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4700374884139305493, guid: c1a4139fdd78be840bff579e0ee95a83, type: 3}
       propertyPath: m_Name
       value: GravityFlip
@@ -5412,6 +5416,18 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 50da030a7c6c8724d80b54845341d60c, type: 2}
+    - target: {fileID: 5943826752332916925, guid: c1a4139fdd78be840bff579e0ee95a83, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438577889699423922, guid: c1a4139fdd78be840bff579e0ee95a83, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8504231028807619400, guid: c1a4139fdd78be840bff579e0ee95a83, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8589,7 +8605,7 @@ PrefabInstance:
       objectReference: {fileID: 688131295}
     - target: {fileID: 8937230173400600791, guid: 00eda24f3f0ac224ca7b32dfb281e3f7, type: 3}
       propertyPath: stageLevel
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8937230173400600791, guid: 00eda24f3f0ac224ca7b32dfb281e3f7, type: 3}
       propertyPath: buttonSounds
