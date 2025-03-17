@@ -95,7 +95,8 @@ public class MainSceneGameManager : MonoBehaviour
     public void ExitButton()
     {
         buttonSounds.Play(); // 버튼 사운드 재생
-        Debug.Log("게임 종료");
+        
+        Application.Quit(); // 게임 종료
     }
 
     // Exit 버튼에 마우스를 가져다 댔을 때
